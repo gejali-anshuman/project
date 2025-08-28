@@ -1,0 +1,631 @@
+:root {
+  --primaryColor: #0e6253;
+  --secondaryColor: #ece1bd;
+  --whiteColor: #fff;
+  --blackColor: #222;
+  --softGreenColor: #e0ffe0; /* Changed to a lighter green for background */
+  --darkGreyColor: #7a7a7a;
+  --greyColor: #f5f5f5;
+}
+
+• {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Open Sans", sans-serif;
+}
+
+}
+
+
+
+}
+body {
+  width: 100%;
+  height: auto;
+  overflow-x: hidden; /* Prevent horizontal scroll from layout shifts */
+}
+
+/* Sidebar */
+.sidebar {
+  height: 100%;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2%;
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+  transition: width 0.3s ease; /* For responsive sidebar toggle */
+  z-index: 100; /* Ensure sidebar is on top */
+}
+
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--whiteColor);
+}
+
+.sidebar-menus {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow menus to take available space */
+}
+
+.sidebar-menus a,
+.sidebar-logout a {
+  padding: 10px 15px; /* Adjusted padding */
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--whiteColor);
+  border-radius: 50px; /* Apply border-radius directly for consistent shape */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar-menus a ion-icon,
+.sidebar-logout a ion-icon {
+  font-size: 20px;
+}
+
+.sidebar-menus a:hover,
+.sidebar-logout a:hover {
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor); /* Change text color on hover */
+}
+
+.sidebar-logout {
+  margin-top: 2rem; /* Add some space above logout */
+}
+
+/* Main Content Area */
+.main {
+    width: calc(100% - 250px); /* Account for sidebar width */
+  min-height: 100vh;
+  padding: 2%;
+  background-color: var(--softGreenColor); /* Corrected typo */
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  gap: 2rem; /* Space between main sections */
+  transition: margin-left 0.3s ease, width 0.3s ease; /* For responsive main area */
+}
+
+/* Main Navbar */
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Ensure it takes full width of main */
+}
+
+.menu-toggle {
+  display: none; /* Hidden by default on desktop */
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--primaryColor);
+}
+
+.search {
+  width: 50%;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--whiteColor);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* Initial shadow */
+  transition: box-shadow 0.3s ease;
+}
+
+.search input {
+  width: calc(100% - 120px); /* Adjust width for button */
+  height: 100%;
+  padding: 0 20px; /* Adjusted padding */
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.search-btn {
+  background-color: var(--secondaryColor);
+  color: var(--whiteColor);
+  border: none;
+  border-radius: 0 20px 20px 0; /* Only right corners rounded */
+  width: 120px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.search:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.search-btn:hover {
+  background-color: var(--primaryColor);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem; /* Adjusted gap */
+}
+
+.cart,
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--whiteColor);
+  font-size: 22px; /* Slightly larger icons */
+  color: var(--primaryColor);
+  text-decoration: none;
+  padding: 0; /* Remove padding */
+  width: 40px; /* Fixed width/height for circular icons */
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  transition: box-shadow 0.3s ease;
+}
+
+.cart:hover,
+.user:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/* Main Highlight Section (Recommendations) */
+.main-highlight {
+  margin: 0; /* Margin handled by main's gap */
+  padding: 2%;
+  background-color: var(--secondaryColor);
+  border-radius: 8px;
+  width: 100%; /* Ensure it takes full width of main */
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+
+.main-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem; /* Space below header */
+}
+
+.main-title {
+  font-size: 30px;
+  color: var(--primaryColor); /* Darker color for titles */
+}
+
+.main-arrow {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 28px; /* Larger arrows */
+  color: var(--primaryColor);
+}
+
+.back,
+.next {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.back:hover,
+.next:hover {
+  color: var(--whiteColor);
+}
+
+.highlight-wrapper {
+  width: 100%;
+  display: flex;
+  padding: 1%;
+  border-radius: 8px;
+  gap: 1.5rem;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+  scroll-snap-type: x mandatory; /* Snap to cards */
+  padding-bottom: 15px; /* Space for scrollbar */
+}
+
+/* Hide scrollbar for highlight-wrapper */
+.highlight-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.highlight-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.highlight-wrapper::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.highlight-card {
+  display: flex;
+  flex-direction: row;
+  min-width: 280px; /* Increased min-width for better visibility */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+  width: auto; /* Let content dictate width */
+  height: 100px; /* Fixed height for consistency */
+  gap: 1rem;
+  border-radius: 8px;
+  padding: 1rem; /* Adjusted padding */
+  background-color: var(--whiteColor); /* Changed to white */
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  transition: transform 0.2s ease;
+  scroll-snap-align: start; /* Snap point */
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+}
+
+.highlight-img {
+  width: 70px; /* Larger image */
+  height: 70px; /* Larger image */
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.highlight-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.highlight-desc h4 {
+  font-size: 1.1rem;
+  color: var(--blackColor);
+  margin-bottom: 0.3rem;
+}
+
+.highlight-desc p {
+  font-size: 0.9rem;
+  color: var(--darkGreyColor);
+  font-weight: 600;
+}
+
+/* Main Menus / Order Section */
+.main-menus {
+  min-height: auto; /* Let content dictate height */
+  background-color: var(--greyColor);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%; /* Ensure it takes full width of main */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Space between filter section, filter buttons, food items */
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+
+.filter-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; /* Push arrows to the right */
+  /* margin-top: 1.5rem; - Handled by main-menus gap */
+}
+
+.filter-arrows {
+  display: flex;
+  gap: 1rem;
+  font-size: 24px;
+  color: var(--primaryColor);
+}
+
+.back-menus,
+.next-menus {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.back-menus:hover,
+.next-menus:hover {
+  color: var(--secondaryColor);
+}
+
+.filter-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto; /* Allow horizontal scrolling for filters */
+  width: 100%;
+  height: auto; /* Let content dictate height */
+  gap: 1rem;
+  padding-bottom: 15px; /* Space for scrollbar */
+  scroll-snap-type: x mandatory; /* Snap to buttons */
+}
+
+/* Hide scrollbar for filter-wrapper */
+.filter-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.filter-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.filter-wrapper::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.filter-btn {
+  background-color: var(--whiteColor);
+  color: var(--darkGreyColor);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap; /* Prevent text wrapping */
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+  transition: all 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 8px;
+  scroll-snap-align: start; /* Snap point */
+}
+
+.filter-btn:hover {
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+}
+
+.filter-btn.active {
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+/* Food Items Section (Grid) */
+.food-items-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.food-card {
+  background-color: var(--whiteColor);
+  border-radius: 8px;
+  overflow: hidden; /* Ensure image doesn't spill out */
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 18px;
+}
+
+.food-card img {
+  width: 50%;
+  height: 300px; /* Fixed height for images */
+  object-fit: cover;
+    object-position: center;
+}
+
+.food-card-desc {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow description to take available space */
+}
+
+.food-card-desc h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--blackColor);
+}
+
+.food-card-desc p {
+  font-size: 0.9rem;
+  color: var(--darkGreyColor);
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Allow description paragraph to push bottom content down */
+  line-height: 1.4;
+}
+
+.food-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Push to the bottom */
+}
+
+.food-card-bottom span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primaryColor);
+}
+
+.food-card-bottom ion-icon {
+  font-size: 28px;
+  color: var(--primaryColor);
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.food-card-bottom ion-icon:hover {
+  color: var(--secondaryColor);
+  transform: scale(1.1);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .main-navbar .search {
+    width: 60%;
+  }
+  .highlight-card {
+    min-width: 250px;
+  }
+  .food-items-section {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0; /* Hide sidebar by default on mobile */
+    overflow: hidden;
+    padding: 0; /* Remove padding when hidden */
+  }
+  .sidebar.active {
+    width: 250px; /* Show sidebar when active */
+    padding: 2%;
+  }
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5%; /* Slightly less padding on mobile */
+  }
+  .menu-toggle {
+    display: block; /* Show menu toggle icon */
+  }
+  .main-navbar .search {
+    width: 65%; /* Adjust search bar width */
+  }
+  .search-btn {
+    display: none; /* Hide search button on smaller screens */
+  }
+  .search input {
+    width: 100%; /* Input takes full width when button is hidden */
+    border-radius: 20px; /* Re-round right side */
+  }
+  .profile {
+    gap: 0.5rem;
+  }
+  .cart,
+  .user {
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+  }
+  .main-title {
+    font-size: 24px;
+  }
+  .main-arrow {
+    font-size: 22px;
+  }
+  .highlight-wrapper,
+  .filter-wrapper {
+    overflow-x: auto; /* Ensure horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+  }
+  /* Optional: Hide scrollbar for these sections on mobile */
+  .highlight-wrapper::-webkit-scrollbar,
+  .filter-wrapper::-webkit-scrollbar {
+    display: none; /* Hide scrollbar but keep functionality */
+  }
+  .highlight-card {
+    min-width: 220px; /* Adjust min-width for smaller screens */
+    height: 90px;
+    padding: 0.8rem;
+  }
+  .highlight-img {
+    width: 60px;
+    height: 60px;
+  }
+  .highlight-desc h4 {
+    font-size: 1rem;
+  }
+  .highlight-desc p {
+    font-size: 0.85rem;
+  }
+  .main-menus {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  .filter-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  .food-items-section {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Adjust grid for smaller cards */
+    gap: 1rem;
+  }
+  .food-card img {
+    height: 140px;
+  }
+  .food-card-desc {
+    padding: 0.8rem;
+  }
+  .food-card-desc h3 {
+    font-size: 1rem;
+  }
+  .food-card-desc p {
+    font-size: 0.8rem;
+  }
+  .food-card-bottom span {
+    font-size: 1rem;
+  }
+  .food-card-bottom ion-icon {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-navbar {
+    flex-wrap: wrap; /* Allow navbar items to wrap */
+    gap: 1rem;
+  }
+  .search {
+    width: 100%; /* Full width search bar */
+    order: 3; /* Push search to next line */
+  }
+  .menu-toggle {
+    order: 1;
+  }
+  .profile {
+    order: 2;
+  }
+  .main-highlight,
+  .main-menus {
+    padding: 1rem;
+  }
+  .main-title {
+        font-size: 20px;
+  }
+  .main-arrow {
+    font-size: 20px;
+  }
+  .highlight-card {
+    min-width: 180px;
+    height: 80px;
+    gap: 0.8rem;
+    padding: 0.6rem;
+  }
+  .highlight-img {
+    width: 50px;
+    height: 50px;
+  }
+  .highlight-desc h4 {
+    font-size: 0.9rem;
+  }
+  .highlight-desc p {
+    font-size: 0.75rem;
+  }
+  .filter-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+  .food-items-section {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  .food-card img {
+    height: 120px;
+  }
+}
